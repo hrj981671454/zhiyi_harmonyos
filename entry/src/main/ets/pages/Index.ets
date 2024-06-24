@@ -18,9 +18,7 @@ struct Index {
       if (code == 200) {
         if (data.flag == 0) {
           action.showToast({ message: "无需更新" })
-          router.pushUrl({ url: "/pages/login/login" }, router.RouterMode.Single, (err) => {
-            action.showToast({ message: err.toString() })
-          })
+          router.pushUrl({ url: "/pages/login/login" })
         } else {
           action.showToast({ message: data.notice })
         }
