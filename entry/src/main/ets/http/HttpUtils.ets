@@ -87,7 +87,7 @@ export default class HttpUtils {
       .request(url, HttpClient.getAppHttpOptions(http.RequestMethod.POST, data))
       .then(data => {
         let json = JSON.parse(data.result.toString())
-        if ("returnCode" in json && "data" in json) {
+        if ("returnCode" in json) {
           successCallback(json.returnCode, json.data, json.info)
           return;
         }
