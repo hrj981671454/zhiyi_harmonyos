@@ -6,7 +6,15 @@
     },
     {
       "name": "base_tool_bar",
-      "value": "#3669f8"
+      "value": "#488bff"
+    },
+    {
+      "name": "global_theme_colors",
+      "value": "#488bff"
+    },
+    {
+      "name": "colorGrey",
+      "value": "#e4e4e4"
     }
   ]
 }

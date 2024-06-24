@@ -1,6 +1,5 @@
 import router from '@ohos.router'
 import HttpUtils from '../http/HttpUtils'
-import { RequestCallback } from '../http/RequestCallback'
 import action from '@ohos.promptAction'
 
 @Entry
@@ -17,8 +16,9 @@ struct Index {
     HttpUtils.post(HttpUtils.getAppUrl() + "super/updateVersion", params, (code, data, info) => {
       if (code == 200) {
         if (data.flag == 0) {
-          action.showToast({ message: "无需更新" })
-          router.pushUrl({ url: "/pages/login/login" })
+          setTimeout(() => {
+            router.replaceUrl({ url: "pages/login/Login" })
+          }, 1000)
         } else {
           action.showToast({ message: data.notice })
         }
@@ -42,9 +42,9 @@ struct Index {
         .height(50)
         .alignSelf(ItemAlign.Center)
         .margin({ bottom: 50 })
-        .visibility(Visibility.Visible)
+        .visibility(Visibility.Hidden)
         .onClick(() => {
-          router.pushUrl({ url: "/pages/login/login" }, router.RouterMode.Single, (err) => {
+          router.pushUrl({ url: "/pages/login/Login" }, router.RouterMode.Single, (err) => {
             action.showToast({ message: err.toString() })
           })
         })
