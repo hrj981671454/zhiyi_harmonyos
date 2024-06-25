@@ -3,14 +3,17 @@ import BaseToolbar from '../base/BaseToolbar'
 import action from '@ohos.promptAction'
 import HttpUtils from '../../http/HttpUtils';
 import MD5Utils from '../../utils/MD5Utils';
+import Loading from '../../component/Loading';
 
 @Entry
 @Component
 struct Login {
   @State phone: string = "";
   @State password: string = "";
+  @State show: boolean = true;
 
   async login() {
+    this.show = true;
     if (this.phone.length == 0) {
       action.showToast({ message: "请输入手机号" })
       return
@@ -38,6 +41,7 @@ struct Login {
   build() {
     Column() {
       BaseToolbar({ title: "登录", showBack: false, showScanCode: false })
+      Loading({ show: this.show })
       Image($r("app.media.icon_logo")).height(160).width(100).margin({ top: 20 })
       Row() {
         Image($r("app.media.icon_phone_login")).height(30).width(30).margin({ left: 10 })
